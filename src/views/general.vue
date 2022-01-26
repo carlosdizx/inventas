@@ -30,9 +30,7 @@ export default {
         }
         this.columnas.push({ text: nombre_columna, value: nombre_columna });
       }
-      for (let i = 0; i < numero; i++) {
-        this.columnas[i].text = this.columnas[i].text.toUpperCase();
-      }
+      this.columnas.map(columna => columna.text=columna.text.toUpperCase())
     },
   },
   created() {
