@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card color="indigo" elevation="20">
-      <v-card-title>Soy una lista</v-card-title>
+      <v-card-title>{{ titulo }}</v-card-title>
       <v-card>
         <!--
         Código que importa
@@ -38,7 +38,7 @@ export default {
   name: "Listado",
   data: () => ({
     search: "",
-    columnas: [
+    columnasxd: [
       { text: "Documento", value: "documento" },
       { text: "Nombres", value: "nombres" },
       { text: "Apellidos", value: "apellidos" },
@@ -48,6 +48,10 @@ export default {
     ],
     filas: [],
   }),
+  props: {
+    titulo: String,
+    columnas : Array,
+  },
   methods: {
     filterOnlyCapsText(value, search, item) {
       return (
