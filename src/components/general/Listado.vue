@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card color="indigo" elevation="20">
+    <v-card color="indigo" :elevation="elevation">
       <v-card-title>{{ titulo }}</v-card-title>
       <v-card>
         <!--
@@ -21,9 +21,6 @@
               class="mx-4"
             />
           </template>
-          <template v-slot:item.detalle="{ item }">
-            <DetallesEgresado :datos="item" />
-          </template>
         </v-data-table>
         <!--
         Código que importa
@@ -38,19 +35,11 @@ export default {
   name: "Listado",
   data: () => ({
     search: "",
-    columnasxd: [
-      { text: "Documento", value: "documento" },
-      { text: "Nombres", value: "nombres" },
-      { text: "Apellidos", value: "apellidos" },
-      { text: "Celular", value: "celular", sortable: false },
-      { text: "Correo", value: "correo", sortable: false },
-      { text: "Más detalles", value: "detalle" },
-    ],
-    filas: [],
   }),
   props: {
     titulo: String,
     columnas : Array,
+    elevation : String,
   },
   methods: {
     filterOnlyCapsText(value, search, item) {
