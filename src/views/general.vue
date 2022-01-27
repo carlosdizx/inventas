@@ -9,7 +9,7 @@
   </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import listado from "../components/general/Listado.vue";
 
 export default {
@@ -22,7 +22,7 @@ export default {
     metodo() {
       const numero = 6;
       const characters = "abcdefghijklmnopqrstuvwxyz";
-      const num = Math.floor(Math.random() * characters.length);
+      const num = Math.floor(Math.random() * characters.length)+1;
       for (let i = 0; i < numero; i++) {
         let nombre_columna = "";
         for (let i = 0; i < numero; i++) {
