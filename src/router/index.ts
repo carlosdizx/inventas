@@ -15,11 +15,6 @@ const routes: Array<RouteConfig> = [
     name: "About",
     component: () => import("../views/About.vue"),
   },
-  {
-    path: "/general",
-    name: "General",
-    component: () => import("../views/general.vue"),
-  },
 ];
 
 const router = new VueRouter({
