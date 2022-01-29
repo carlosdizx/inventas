@@ -54,6 +54,7 @@ export default Vue.extend({
   props: {
     coleccion: String,
     titulo: String,
+    objeto: Object,
     llave: String,
   },
   methods: {
@@ -67,7 +68,7 @@ export default Vue.extend({
       );
     },
     async cargarInformacion() {
-      const atributos = Object.keys(new Persona());
+      const atributos = Object.keys(this.objeto);
       await atributos.forEach((atributo) => {
         const columna = { text: atributo.toUpperCase(), value: atributo };
         this.columnas.push(columna);
