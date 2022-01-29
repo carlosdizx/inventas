@@ -1,24 +1,16 @@
 <template>
   <v-container>
-    <div v-for="(persona, index) of personas" :key="index">
-      {{ persona }}
-    </div>
+    <tabla />
   </v-container>
 </template>
 
 <script>
 import Vue from "vue";
-import { LISTAR } from "@/services/crud";
+import tabla from "@/components/tabla";
 
 export default Vue.extend({
   name: "Home",
-  data: () => ({
-    personas: [],
-  }),
-  components: {},
-  async mounted() {
-    const listado = await LISTAR("personas");
-    listado.forEach((item) => this.personas.push(item.data()));
-  },
+  components: { tabla },
+  data: () => ({}),
 });
 </script>
