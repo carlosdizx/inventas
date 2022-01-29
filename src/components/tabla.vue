@@ -30,6 +30,11 @@
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
         </template>
+        <template v-slot:item.detalle="{}">
+          <v-btn icon color="primary">
+            <v-icon>mdi-eye</v-icon>
+          </v-btn>
+        </template>
       </v-data-table>
     </v-card-text>
   </v-card>
@@ -54,18 +59,21 @@ export default Vue.extend({
     llave: String,
   },
   methods: {
-    filtrarPorLlave(value: any, search: any) {
+    filtrarPorLlave(valor: any, buscado: any) {
       return (
-        value != null &&
-        search != null &&
-        typeof value === "string" &&
-        value.toString().toLocaleUpperCase().indexOf(search.toUpperCase()) !==
+        valor != null &&
+        buscado != null &&
+        typeof valor === "string" &&
+        valor.toString().toLocaleUpperCase().indexOf(buscado.toUpperCase()) !==
           -1
       );
     },
     async cargarInformacion() {
       (await LISTAR(this.coleccion)).forEach((item) => {
-        this.filas.push(item.data());
+        const obj: any = item.data();
+        obj.id = item.id;
+        this.filas.push(obj);
+        console.log(obj);
       });
       const timestamp = 1643346000;
     },

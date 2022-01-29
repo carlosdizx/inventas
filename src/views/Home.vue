@@ -30,6 +30,7 @@ export default Vue.extend({
   data: () => ({
     objeto: new Persona(),
     columnas: [
+      { text: "Detalle", value: "detalle" },
       { text: "Nombres", value: "nombres" },
       { text: "Apellidos", value: "apellidos" },
       { text: "Documento", value: "documento" },
@@ -39,6 +40,7 @@ export default Vue.extend({
       { text: "Acciones", value: "acciones" },
     ],
     columnas_ventas: [
+      { text: "Detalle", value: "detalle" },
       { text: "Fecha de generación", value: "fecha_generacion" },
       { text: "Subtotal", value: "subtotal" },
       { text: "Descuento", value: "descuento" },
