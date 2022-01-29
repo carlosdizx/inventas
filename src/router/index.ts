@@ -15,6 +15,11 @@ const routes: Array<RouteConfig> = [
     name: "About",
     component: () => import("../views/About.vue"),
   },
+  {
+    path: "/Formulario",
+    name: "Formulario",
+    component: () => import("../views/Formulario.vue"),
+  },
 ];
 
 const router = new VueRouter({
