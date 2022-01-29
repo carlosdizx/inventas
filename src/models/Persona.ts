@@ -1,4 +1,4 @@
 export class Persona {
-  nombres!: string;
-  apellidos!: string;
+  nombres = "";
+  apellidos = "";
 }

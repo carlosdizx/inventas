@@ -1,12 +1,12 @@
 <template>
   <v-container>
-    <tabla />
+    <tabla coleccion="personas" llave="nombres" />
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from "vue";
-import tabla from "@/components/tabla";
+import tabla from "@/components/tabla.vue";
 
 export default Vue.extend({
   name: "Home",
