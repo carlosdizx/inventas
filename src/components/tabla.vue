@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-5" color="primary">
+  <v-card class="elevation-5" color="black">
     <v-card-title class="white--text">Listado de {{ titulo }} </v-card-title>
     <v-card-text>
       <v-data-table
@@ -17,30 +17,39 @@
               :label="'Buscar por \'' + llave + '\''"
               class="mx-6"
             />
-            <v-btn class="mx-4 my-2" fab dark color="primary">
+            <v-btn class="mx-4 my-6" fab dark color="info">
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
           </v-row>
-          <v-btn color="green" class="mx-4" dark>
+          <v-btn color="green" class="mx-4 my-4" dark>
             <v-icon>mdi-microsoft-excel</v-icon>
           </v-btn>
-          <v-btn color="orange" class="mx-4" dark>
-            <v-icon>mdi-home</v-icon>
+          <v-btn color="orange" class="mx-4 my-4" dark>
+            <v-icon>mdi-air-horn</v-icon>
           </v-btn>
-          <v-btn color="deep-orange" class="mx-4" dark>
-            <v-icon>mdi-delete</v-icon>
+          <v-btn color="deep-orange" class="mx-4 my-4" dark>
+            <v-icon>mdi-allergy</v-icon>
+          </v-btn>
+          <v-btn color="deep-purple" class="mx-4 my-4" dark>
+            <v-icon>mdi-virus</v-icon>
+          </v-btn>
+          <v-btn color="cyan" class="mx-4 my-4" dark>
+            <v-icon>mdi-account-key</v-icon>
+          </v-btn>
+          <v-btn color="indigo" class="mx-4 my-4" dark>
+            <v-icon>mdi-charity</v-icon>
           </v-btn>
         </template>
         <template v-slot:item.acciones="{}">
-          <v-btn fab color="deep-orange" dark small>
+          <v-btn fab color="deep-orange" dark small outlined>
             <v-icon>mdi-delete</v-icon>
           </v-btn>
-          <v-btn fab color="warning" dark small>
+          <v-btn fab small outlined>
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
         </template>
         <template v-slot:item.detalle="{}">
-          <v-btn icon color="primary">
+          <v-btn icon color="primary" outlined>
             <v-icon>mdi-eye</v-icon>
           </v-btn>
         </template>
