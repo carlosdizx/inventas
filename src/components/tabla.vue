@@ -1,20 +1,34 @@
 <template>
-  <v-data-table
-    :headers="columnas"
-    :items="filas"
-    :item-key="llave"
-    class="elevation-5"
-    :search="buscado"
-    :custom-filter="filterOnlyCapsText"
-  >
-    <template v-slot:top>
-      <v-text-field
-        v-model="buscado"
-        :label="'Buscar por \'' + llave + '\''"
-        class="mx-4"
-      />
-    </template>
-  </v-data-table>
+  <v-card class="elevation-5" color="primary">
+    <v-card-title class="white--text">Listado de {{ titulo }} </v-card-title>
+    <v-card-text>
+      <v-data-table
+        :headers="columnas"
+        :items="filas"
+        :item-key="llave"
+        class="elevation-2"
+        :search="buscado"
+        :custom-filter="filtrarPorLlave"
+      >
+        <template v-slot:top>
+          <v-row>
+            <v-col cols="11">
+              <v-text-field
+                v-model="buscado"
+                :label="'Buscar por \'' + llave + '\''"
+                class="mx-4"
+              />
+            </v-col>
+            <v-col cols="1">
+              <v-btn class="mx-2" fab dark color="primary">
+                <v-icon dark>mdi-plus</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+        </template>
+      </v-data-table>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -31,10 +45,11 @@ export default Vue.extend({
   }),
   props: {
     coleccion: String,
+    titulo: String,
     llave: String,
   },
   methods: {
-    filterOnlyCapsText(value: any, search: any) {
+    filtrarPorLlave(value: any, search: any) {
       return (
         value != null &&
         search != null &&

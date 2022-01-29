@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <tabla coleccion="personas" llave="nombres" />
+    <tabla coleccion="personas" titulo="Personas" llave="nombres" />
   </v-container>
 </template>
 
