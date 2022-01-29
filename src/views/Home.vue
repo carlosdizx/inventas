@@ -6,9 +6,9 @@
   </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
-import { LISTAR } from "@/services/personas";
+import { LISTAR } from "@/services/crud";
 
 export default Vue.extend({
   name: "Home",
@@ -17,7 +17,7 @@ export default Vue.extend({
   }),
   components: {},
   async mounted() {
-    const listado = await LISTAR();
+    const listado = await LISTAR("personas");
     listado.forEach((item) => this.personas.push(item.data()));
   },
 });
