@@ -26,6 +26,14 @@
             </v-col>
           </v-row>
         </template>
+        <template v-slot:item.acciones="{}">
+          <v-btn color="amber" fab small>
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+          <v-btn dark color="deep-orange" fab small>
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+        </template>
       </v-data-table>
     </v-card-text>
   </v-card>
@@ -67,6 +75,9 @@ export default Vue.extend({
       (await LISTAR(this.coleccion)).forEach((item) =>
         this.filas.push(item.data())
       );
+      // Agregar los botones de edita y eliminar
+      const editar: any = { text: "ACCIONES", value: "acciones" };
+      this.columnas.push(editar);
     },
   },
   async created() {
