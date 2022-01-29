@@ -12,18 +12,14 @@
       >
         <template v-slot:top>
           <v-row>
-            <v-col cols="11">
-              <v-text-field
-                v-model="buscado"
-                :label="'Buscar por \'' + llave + '\''"
-                class="mx-4"
-              />
-            </v-col>
-            <v-col cols="1">
-              <v-btn class="mx-2" fab dark color="primary">
-                <v-icon dark>mdi-plus</v-icon>
-              </v-btn>
-            </v-col>
+            <v-text-field
+              v-model="buscado"
+              :label="'Buscar por \'' + llave + '\''"
+              class="mx-6"
+            />
+            <v-btn class="mx-4 my-2" fab dark color="primary">
+              <v-icon dark>mdi-plus</v-icon>
+            </v-btn>
           </v-row>
         </template>
         <template v-slot:item.acciones="{}">
@@ -69,16 +65,9 @@ export default Vue.extend({
     },
     async cargarInformacion() {
       (await LISTAR(this.coleccion)).forEach((item) => {
-        const values = Object.values(item.data());
-        values.forEach((value) => console.log(value, typeof value));
         this.filas.push(item.data());
       });
-      console.log("----------");
       const timestamp = 1643346000;
-      console.log(new Date(timestamp));
-      // Agregar los botones de edita y eliminar
-      const editar: any = { text: "ACCIONES", value: "acciones" };
-      this.columnas.push(editar);
     },
   },
   async created() {
