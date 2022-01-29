@@ -2,7 +2,7 @@
   <v-data-table
     :headers="columnas"
     :items="filas"
-    item-key="documento"
+    :item-key="key_busqueda"
     class="elevation-5"
     :search="buscado"
     :custom-filter="filtradoTextoMayusculas"
@@ -23,6 +23,7 @@ export default {
     columnas: [],
     filas: [],
     coleccion: "personas",
+    key_busqueda: "nombres",
   }),
   methods: {
     filtradoTextoMayusculas(valor, buscado) {
