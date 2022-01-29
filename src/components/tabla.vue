@@ -48,13 +48,13 @@ export default Vue.extend({
   name: "tabla",
   data: () => ({
     buscado: "",
-    columnas: [],
     filas: [],
   }),
   props: {
     coleccion: String,
     titulo: String,
     objeto: Object,
+    columnas: Array,
     llave: String,
   },
   methods: {
@@ -68,14 +68,14 @@ export default Vue.extend({
       );
     },
     async cargarInformacion() {
-      const atributos = Object.keys(this.objeto);
-      await atributos.forEach((atributo) => {
-        const columna = { text: atributo.toUpperCase(), value: atributo };
-        this.columnas.push(columna);
+      (await LISTAR(this.coleccion)).forEach((item) => {
+        const values = Object.values(item.data());
+        values.forEach((value) => console.log(value, typeof value));
+        this.filas.push(item.data());
       });
-      (await LISTAR(this.coleccion)).forEach((item) =>
-        this.filas.push(item.data())
-      );
+      console.log("----------");
+      const timestamp = 1643346000;
+      console.log(new Date(timestamp));
       // Agregar los botones de edita y eliminar
       const editar: any = { text: "ACCIONES", value: "acciones" };
       this.columnas.push(editar);

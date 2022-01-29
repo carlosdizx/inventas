@@ -1,10 +1,20 @@
 <template>
   <v-container>
     <tabla
+      class="my-2"
       coleccion="personas"
       titulo="Personas"
-      llave="nombres"
       :objeto="objeto"
+      :columnas="columnas"
+      llave="nombres"
+    />
+    <tabla
+      class="my-2"
+      coleccion="ventas"
+      titulo="Ventas"
+      :objeto="objeto"
+      :columnas="columnas_ventas"
+      llave="fecha"
     />
   </v-container>
 </template>
@@ -19,6 +29,20 @@ export default Vue.extend({
   components: { tabla },
   data: () => ({
     objeto: new Persona(),
+    columnas: [
+      { text: "NOMBRES", value: "nombres" },
+      { text: "APELLIDOS", value: "apellidos" },
+      { text: "DOCUMENTO", value: "documento" },
+      { text: "FECHA DE NACIMIENTO", value: "fecha_nacimiento" },
+      { text: "FECHA DE EXPEDICIÓN", value: "fecha_expedicion" },
+      { text: "GÉNERO", value: "genero" },
+    ],
+    columnas_ventas: [
+      { text: "Fecha de generación", value: "fecha_generacion" },
+      { text: "Subtotal", value: "subtotal" },
+      { text: "Descuento", value: "descuento" },
+      { text: "Total", value: "total" },
+    ],
   }),
 });
 </script>
