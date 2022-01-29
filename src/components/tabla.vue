@@ -21,12 +21,21 @@
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
           </v-row>
-        </template>
-        <template v-slot:item.acciones="{}">
-          <v-btn color="amber" fab small>
+          <v-btn color="green" class="mx-4" dark>
+            <v-icon>mdi-microsoft-excel</v-icon>
+          </v-btn>
+          <v-btn color="orange" class="mx-4" dark>
+            <v-icon>mdi-home</v-icon>
+          </v-btn>
+          <v-btn color="deep-orange" class="mx-4" dark>
             <v-icon>mdi-delete</v-icon>
           </v-btn>
-          <v-btn dark color="deep-orange" fab small>
+        </template>
+        <template v-slot:item.acciones="{}">
+          <v-btn fab color="deep-orange" dark small>
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+          <v-btn fab color="warning" dark small>
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
         </template>
@@ -73,7 +82,6 @@ export default Vue.extend({
         const obj: any = item.data();
         obj.id = item.id;
         this.filas.push(obj);
-        console.log(obj);
       });
       const timestamp = 1643346000;
     },

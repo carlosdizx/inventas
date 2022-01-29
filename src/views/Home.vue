@@ -10,6 +10,14 @@
     />
     <tabla
       class="my-2"
+      coleccion="personas"
+      titulo="Personas"
+      :objeto="objeto"
+      :columnas="columnas"
+      llave="apellidos"
+    />
+    <tabla
+      class="my-2"
       coleccion="ventas"
       titulo="Ventas"
       :objeto="objeto"
