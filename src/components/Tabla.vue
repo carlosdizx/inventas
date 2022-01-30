@@ -72,6 +72,7 @@
 import Vue from "vue";
 import { GUARDAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
+import { toDate } from "../formats/formats";
 
 export default Vue.extend({
   name: "Tabla",
@@ -111,6 +112,11 @@ export default Vue.extend({
       (await LISTAR(this.coleccion)).forEach((item) => {
         const obj: any = item.data();
         obj.id = item.id;
+
+        const fecha_nacimiento = obj.fecha_nacimiento.fecha.seconds;
+        const fecha_expedicion = obj.fecha_expedicion.fecha.seconds;
+        obj.fecha_nacimiento = toDate(new Date(fecha_nacimiento * 1000));
+        obj.fecha_expedicion = toDate(new Date(fecha_expedicion * 1000));
         this.filas.push(obj);
       });
     },
