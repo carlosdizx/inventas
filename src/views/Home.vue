@@ -20,7 +20,6 @@
 <script lang="ts">
 import Vue from "vue";
 import Tabla from "@/components/Tabla.vue";
-import { Persona } from "@/models/Persona";
 
 export default Vue.extend({
   name: "Home",
