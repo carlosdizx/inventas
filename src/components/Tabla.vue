@@ -44,7 +44,7 @@
           <v-btn fab color="deep-orange" dark small outlined>
             <v-icon>mdi-delete</v-icon>
           </v-btn>
-          <v-btn fab small outlined>
+          <v-btn fab color="amber" small outlined>
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
         </template>
@@ -64,7 +64,7 @@ import { LISTAR } from "@/services/crud";
 import { Persona } from "@/models/Persona";
 
 export default Vue.extend({
-  name: "tabla",
+  name: "Tabla",
   data: () => ({
     buscado: "",
     filas: [],
@@ -72,7 +72,6 @@ export default Vue.extend({
   props: {
     coleccion: String,
     titulo: String,
-    objeto: Object,
     columnas: Array,
     llave: String,
   },
@@ -92,7 +91,6 @@ export default Vue.extend({
         obj.id = item.id;
         this.filas.push(obj);
       });
-      const timestamp = 1643346000;
     },
   },
   async created() {

@@ -1,26 +1,16 @@
 <template>
   <v-container>
-    <tabla
+    <Tabla
       class="my-2"
       coleccion="personas"
       titulo="Personas"
-      :objeto="objeto"
       :columnas="columnas"
       llave="nombres"
     />
-    <tabla
-      class="my-2"
-      coleccion="personas"
-      titulo="Personas"
-      :objeto="objeto"
-      :columnas="columnas"
-      llave="apellidos"
-    />
-    <tabla
+    <Tabla
       class="my-2"
       coleccion="ventas"
       titulo="Ventas"
-      :objeto="objeto"
       :columnas="columnas_ventas"
       llave="fecha"
     />
@@ -29,14 +19,13 @@
 
 <script lang="ts">
 import Vue from "vue";
-import tabla from "@/components/tabla.vue";
+import Tabla from "@/components/Tabla.vue";
 import { Persona } from "@/models/Persona";
 
 export default Vue.extend({
   name: "Home",
-  components: { tabla },
+  components: { Tabla },
   data: () => ({
-    objeto: new Persona(),
     columnas: [
       { text: "Detalle", value: "detalle" },
       { text: "Nombres", value: "nombres" },
