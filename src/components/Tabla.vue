@@ -70,7 +70,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { LISTAR } from "@/services/crud";
+import { GUARDAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
 
 export default Vue.extend({
@@ -96,6 +96,18 @@ export default Vue.extend({
       );
     },
     async cargarInformacion() {
+      /*
+      for (let i = 0; i < 100; i++) {
+        await GUARDAR(this.coleccion, {
+          nombres: "Nombres_" + i,
+          apellidos: "Apellidos" + i,
+          documento: 1082749250 + i + "",
+          fecha_nacimiento: { fecha: new Date() },
+          fecha_expedicion: { fecha: new Date() },
+          genero: "M",
+        });
+      }
+      */
       (await LISTAR(this.coleccion)).forEach((item) => {
         const obj: any = item.data();
         obj.id = item.id;

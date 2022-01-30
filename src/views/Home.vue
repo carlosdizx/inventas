@@ -5,8 +5,9 @@
       coleccion="personas"
       titulo="Personas"
       :columnas="columnas"
-      llave="nombres"
+      llave="documento"
     />
+    <!--
     <Tabla
       class="my-2"
       coleccion="ventas"
@@ -14,6 +15,7 @@
       :columnas="columnas_ventas"
       llave="fecha"
     />
+    -->
   </v-container>
 </template>
 
