@@ -35,6 +35,7 @@ export default Vue.extend({
       { text: "Fecha de nacimiento", value: "fecha_nacimiento" },
       { text: "Fecha de expedición", value: "fecha_expedicion" },
       { text: "Género", value: "genero" },
+      { text: "Salario", value: "salario" },
       { text: "Acciones", value: "acciones" },
     ],
     columnas_ventas: [

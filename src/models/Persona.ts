@@ -8,4 +8,5 @@ export interface Persona {
   correo: string;
   celular: string;
   direccion: string;
+  salario: any;
 }

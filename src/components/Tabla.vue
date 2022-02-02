@@ -110,10 +110,11 @@ export default Vue.extend({
           correo: "correo@mail_" + i,
           celular: "3026508102",
           direccion: "Calle " + i,
+          salario: { moneda: "5000.56" },
         };
         await GUARDAR(this.coleccion, persona);
       }
-      */
+       */
       (await LISTAR(this.coleccion)).forEach((item) => {
         const obj = item.data();
         obj.id = item.id;
