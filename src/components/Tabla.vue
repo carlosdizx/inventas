@@ -72,7 +72,8 @@
 import Vue from "vue";
 import { GUARDAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
-import { toDate } from "../formats/formats";
+import { tipo_dato, toDate } from "../formats/formats";
+import { Persona } from "@/models/Persona";
 
 export default Vue.extend({
   name: "Tabla",
@@ -98,25 +99,31 @@ export default Vue.extend({
     },
     async cargarInformacion() {
       /*
-      for (let i = 0; i < 100; i++) {
-        await GUARDAR(this.coleccion, {
+      for (let i = 0; i < 2; i++) {
+        const persona: Persona = {
           nombres: "Nombres_" + i,
           apellidos: "Apellidos" + i,
           documento: 1082749250 + i + "",
           fecha_nacimiento: { fecha: new Date() },
           fecha_expedicion: { fecha: new Date() },
           genero: "M",
-        });
+          correo: "correo@mail_" + i,
+          celular: "3026508102",
+          direccion: "Calle " + i,
+        };
+        await GUARDAR(this.coleccion, persona);
       }
       */
       (await LISTAR(this.coleccion)).forEach((item) => {
-        const obj: any = item.data();
+        const obj = item.data();
         obj.id = item.id;
-
-        const fecha_nacimiento = obj.fecha_nacimiento.fecha.seconds;
-        const fecha_expedicion = obj.fecha_expedicion.fecha.seconds;
-        obj.fecha_nacimiento = toDate(new Date(fecha_nacimiento * 1000));
-        obj.fecha_expedicion = toDate(new Date(fecha_expedicion * 1000));
+        Object.values(obj).map((value, index) => {
+          if (typeof value === "object") {
+            value = tipo_dato(value);
+            const key: string = Object.keys(obj)[index].toString();
+            obj[key] = value;
+          }
+        });
         this.filas.push(obj);
       });
     },
