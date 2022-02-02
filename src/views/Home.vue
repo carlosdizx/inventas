@@ -36,6 +36,8 @@ export default Vue.extend({
       { text: "Fecha de expedición", value: "fecha_expedicion" },
       { text: "Género", value: "genero" },
       { text: "Salario", value: "salario" },
+      { text: "Calificación", value: "calificacion" },
+      { text: "Estado", value: "estado" },
       { text: "Acciones", value: "acciones" },
     ],
     columnas_ventas: [

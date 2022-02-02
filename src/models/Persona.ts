@@ -9,4 +9,6 @@ export interface Persona {
   celular: string;
   direccion: string;
   salario: any;
+  calificacion: any;
+  estado: string;
 }

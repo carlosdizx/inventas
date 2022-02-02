@@ -63,6 +63,29 @@
             <v-icon>mdi-eye</v-icon>
           </v-btn>
         </template>
+        <template v-slot:item.calificacion="{ item }">
+          <v-rating :value="item.calificacion" small dense readonly />
+        </template>
+        <template v-slot:item.estado="{ item }">
+          <v-icon color="green" v-if="item.estado === 'Activo'">
+            mdi-check-circle
+          </v-icon>
+          <v-icon color="red" v-if="item.estado === 'Inactivo'">
+            mdi-close-circle
+          </v-icon>
+          <v-icon color="warning" v-if="item.estado === 'Pendiente'">
+            mdi-alert-circle
+          </v-icon>
+          <v-icon color="blue" v-if="item.estado === 'Revisión'">
+            mdi-cube-scan
+          </v-icon>
+          <v-icon color="green" v-if="item.estado === 'Aprobado'">
+            mdi-cash-check
+          </v-icon>
+          <v-icon color="red" v-if="item.estado === 'Desaprobado'">
+            mdi-cash-remove
+          </v-icon>
+        </template>
       </v-data-table>
     </v-card-text>
   </v-card>
@@ -99,7 +122,7 @@ export default Vue.extend({
     },
     async cargarInformacion() {
       /*
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < 10; i++) {
         const persona: Persona = {
           nombres: "Nombres_" + i,
           apellidos: "Apellidos" + i,
@@ -110,7 +133,9 @@ export default Vue.extend({
           correo: "correo@mail_" + i,
           celular: "3026508102",
           direccion: "Calle " + i,
-          salario: { moneda: "5000.56" },
+          salario: { moneda: 5000.56 },
+          calificacion: { calificacion: "4.5" },
+          estado: "Activo",
         };
         await GUARDAR(this.coleccion, persona);
       }
