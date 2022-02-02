@@ -21,34 +21,6 @@
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
           </v-row>
-          <v-btn color="green" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-microsoft-excel</v-icon>
-          </v-btn>
-          <v-btn color="orange" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-air-horn</v-icon>
-          </v-btn>
-          <v-btn
-            color="deep-orange"
-            class="mx-4 my-4"
-            dark
-            @click="monstrarMensaje"
-          >
-            <v-icon>mdi-allergy</v-icon>
-          </v-btn>
-          <v-btn
-            color="deep-purple"
-            class="mx-4 my-4"
-            dark
-            @click="monstrarMensaje"
-          >
-            <v-icon>mdi-virus</v-icon>
-          </v-btn>
-          <v-btn color="cyan" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-account-key</v-icon>
-          </v-btn>
-          <v-btn color="indigo" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-charity</v-icon>
-          </v-btn>
         </template>
         <template v-slot:item.acciones="{}">
           <v-btn fab color="deep-orange" dark small outlined>
@@ -152,9 +124,6 @@ export default Vue.extend({
         });
         this.filas.push(obj);
       });
-    },
-    monstrarMensaje() {
-      Swal.fire("Felcitaciones", "hiciste click en un boton", "info");
     },
   },
   async created() {
