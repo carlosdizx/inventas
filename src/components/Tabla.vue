@@ -21,34 +21,6 @@
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
           </v-row>
-          <v-btn color="green" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-microsoft-excel</v-icon>
-          </v-btn>
-          <v-btn color="orange" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-air-horn</v-icon>
-          </v-btn>
-          <v-btn
-            color="deep-orange"
-            class="mx-4 my-4"
-            dark
-            @click="monstrarMensaje"
-          >
-            <v-icon>mdi-allergy</v-icon>
-          </v-btn>
-          <v-btn
-            color="deep-purple"
-            class="mx-4 my-4"
-            dark
-            @click="monstrarMensaje"
-          >
-            <v-icon>mdi-virus</v-icon>
-          </v-btn>
-          <v-btn color="cyan" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-account-key</v-icon>
-          </v-btn>
-          <v-btn color="indigo" class="mx-4 my-4" dark @click="monstrarMensaje">
-            <v-icon>mdi-charity</v-icon>
-          </v-btn>
         </template>
         <template v-slot:item.acciones="{}">
           <v-btn fab color="deep-orange" dark small outlined>
@@ -62,6 +34,29 @@
           <v-btn icon color="primary" outlined>
             <v-icon>mdi-eye</v-icon>
           </v-btn>
+        </template>
+        <template v-slot:item.calificacion="{ item }">
+          <v-rating :value="item.calificacion" small dense readonly />
+        </template>
+        <template v-slot:item.estado="{ item }">
+          <v-icon color="green" v-if="item.estado === 'Activo'">
+            mdi-check-circle
+          </v-icon>
+          <v-icon color="red" v-if="item.estado === 'Inactivo'">
+            mdi-close-circle
+          </v-icon>
+          <v-icon color="warning" v-if="item.estado === 'Pendiente'">
+            mdi-alert-circle
+          </v-icon>
+          <v-icon color="blue" v-if="item.estado === 'Revisión'">
+            mdi-cube-scan
+          </v-icon>
+          <v-icon color="green" v-if="item.estado === 'Aprobado'">
+            mdi-cash-check
+          </v-icon>
+          <v-icon color="red" v-if="item.estado === 'Desaprobado'">
+            mdi-cash-remove
+          </v-icon>
         </template>
       </v-data-table>
     </v-card-text>
@@ -99,7 +94,7 @@ export default Vue.extend({
     },
     async cargarInformacion() {
       /*
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < 10; i++) {
         const persona: Persona = {
           nombres: "Nombres_" + i,
           apellidos: "Apellidos" + i,
@@ -110,10 +105,13 @@ export default Vue.extend({
           correo: "correo@mail_" + i,
           celular: "3026508102",
           direccion: "Calle " + i,
+          salario: { moneda: 5000.56 },
+          calificacion: { calificacion: "4.5" },
+          estado: "Activo",
         };
         await GUARDAR(this.coleccion, persona);
       }
-      */
+       */
       (await LISTAR(this.coleccion)).forEach((item) => {
         const obj = item.data();
         obj.id = item.id;
@@ -126,9 +124,6 @@ export default Vue.extend({
         });
         this.filas.push(obj);
       });
-    },
-    monstrarMensaje() {
-      Swal.fire("Felcitaciones", "hiciste click en un boton", "info");
     },
   },
   async created() {
