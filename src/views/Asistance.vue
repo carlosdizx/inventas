@@ -18,7 +18,11 @@
           </v-col>
           <v-col>
             <h2>Fecha:</h2>
-            <v-text-field disabled v-model="dat.fecha"></v-text-field>
+            <v-text-field
+              readonly
+              v-model="dat.fecha"
+              append-icon="mdi-calendar"
+            ></v-text-field>
           </v-col>
         </v-row>
         <v-row>
@@ -56,22 +60,42 @@
           >Registrar</v-btn
         >
       </v-card-actions>
+      <Tabla
+        class="my-2"
+        :coleccion="colecction"
+        titulo="Personas"
+        :columnas="columnas"
+        llave="autor"
+      />
     </v-card>
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import { GUARDAR } from "@/services/crud";
 import Vue from "vue";
-import moment from "moment";
+import { toDate } from "@/formats/formats";
+import Swal from "sweetalert2";
+import Tabla from "../components/Tabla.vue";
 
 export default Vue.extend({
   name: "Asistance",
+  components: { Tabla },
   data: () => ({
+    colecction: "asistances",
+    columnas: [
+      { text: "Descripción", value: "description" },
+      { text: "Autor", value: "autor" },
+      { text: "Fecha", value: "fecha" },
+      { text: "Tareas actual", value: "currentTasks" },
+      { text: "Proximas tareas", value: "nextTasks" },
+      { text: "Ideas", value: "ideas" },
+      { text: "Acciones", value: "acciones" },
+    ],
     dat: {
       description: null,
       autor: null,
-      fecha: null,
+      fecha: "",
       currentTasks: null,
       nextTasks: null,
       ideas: null,
@@ -85,11 +109,21 @@ export default Vue.extend({
   }),
   methods: {
     async saveAsistance() {
-      await GUARDAR("asistances", this.dat);
+      await GUARDAR(this.colecction, this.dat);
+      this.dat = {
+        description: null,
+        autor: null,
+        fecha: "",
+        currentTasks: null,
+        nextTasks: null,
+        ideas: null,
+      };
+      this.dat.fecha = toDate(new Date());
+      Swal.fire("Asistencia registrada", "", "success");
     },
   },
   created() {
-    this.dat.fecha = moment(new Date()).format("dddd Do MMMM YYYY, HH:MM");
+    this.dat.fecha = toDate(new Date());
   },
 });
 </script>

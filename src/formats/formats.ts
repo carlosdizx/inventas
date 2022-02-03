@@ -2,9 +2,9 @@ import { async } from "@firebase/util";
 import moment from "moment";
 moment.locale("es");
 
-const toDate = (dat: any) => moment(dat).format("dddd Do MMMM, YYYY");
+export const toDate = (dat: any) => moment(dat).format("dddd Do MMMM, YYYY");
 
-const toNumber = (dat: any) => new Intl.NumberFormat().format(dat);
+export const toNumber = (dat: any) => new Intl.NumberFormat().format(dat);
 
 export const tipo_dato = (valor: any) => {
   let aux = null;
