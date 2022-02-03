@@ -18,7 +18,7 @@
           </v-col>
           <v-col>
             <h2>Fecha:</h2>
-            <v-text-field v-model="dat.fecha"></v-text-field>
+            <v-text-field disabled v-model="dat.fecha"></v-text-field>
           </v-col>
         </v-row>
         <v-row>
@@ -63,6 +63,7 @@
 <script>
 import { GUARDAR } from "@/services/crud";
 import Vue from "vue";
+import moment from "moment";
 
 export default Vue.extend({
   name: "Asistance",
@@ -88,7 +89,7 @@ export default Vue.extend({
     },
   },
   created() {
-    this.dat.fecha = new Date().toString();
+    this.dat.fecha = moment(new Date()).format("dddd Do MMMM YYYY, HH:MM");
   },
 });
 </script>
