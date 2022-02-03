@@ -67,7 +67,7 @@
 import Vue from "vue";
 import { GUARDAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
-import { tipo_dato, toDate } from "../formats/formats";
+import { tipo_dato, toDateWithDetail } from "../formats/formats";
 import { Persona } from "@/models/Persona";
 
 export default Vue.extend({
