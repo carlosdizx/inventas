@@ -15,6 +15,8 @@ export const tipo_dato = (valor: any) => {
     const dato: any = Object.values(valor)[index];
     if (key === "fecha") {
       aux = toDate(dato.seconds * 1000);
+    } else if (key === "fecha_detalle") {
+      aux = toDateWithDetail(dato.seconds * 1000);
     } else if (key === "numero") {
       aux = toNumber(dato);
     } else if (key === "moneda") {
