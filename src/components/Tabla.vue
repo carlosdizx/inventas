@@ -65,10 +65,11 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { GUARDAR, LISTAR } from "@/services/crud";
+import { BUSCAR, ELIMINAR, GUARDAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
 import { tipo_dato, toDateWithDetail } from "../formats/formats";
 import { Persona } from "@/models/Persona";
+import { lang } from "moment";
 
 export default Vue.extend({
   name: "Tabla",
@@ -124,6 +125,8 @@ export default Vue.extend({
         });
         this.filas.push(obj);
       });
+      //let documento = await BUSCAR(this.coleccion, "1PMqZ8yCWozDHTjWVuh0");
+      //let documento = await ELIMINAR(this.coleccion, "1PMqZ8yCWozDHTjWVuh0");
     },
   },
   async created() {
