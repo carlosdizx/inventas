@@ -101,7 +101,7 @@ export default Vue.extend({
       );
     },
     async cargarInformacion() {
-      /*
+      /**
       for (let i = 0; i < 10; i++) {
         const persona: Persona = {
           nombres: "Nombres_" + i,
@@ -136,10 +136,20 @@ export default Vue.extend({
       //let documento = await ELIMINAR(this.coleccion, "1PMqZ8yCWozDHTjWVuh0");
     },
     async eliminar(id: string) {
-      await Swal.fire("Desea eliminarlo", "Acción irreversible", "question");
-      await ELIMINAR(this.coleccion, id);
-      this.filas = [];
-      await this.cargarInformacion();
+      Swal.fire({
+        title: "¿Desea eliminar el registro?",
+        showDenyButton: true,
+        confirmButtonText: "Eliminar",
+        confirmButtonColor: "green",
+        denyButtonText: `No aún no!`,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await ELIMINAR(this.coleccion, id);
+          this.filas = [];
+          await this.cargarInformacion();
+          await Swal.fire("Eliminado!", "", "success");
+        }
+      });
     },
   },
   async created() {
