@@ -22,8 +22,15 @@
             </v-btn>
           </v-row>
         </template>
-        <template v-slot:item.acciones="{}">
-          <v-btn fab color="deep-orange" dark small outlined>
+        <template v-slot:item.acciones="{ item }">
+          <v-btn
+            fab
+            color="deep-orange"
+            dark
+            small
+            outlined
+            @click="eliminar(item.id)"
+          >
             <v-icon>mdi-delete</v-icon>
           </v-btn>
           <v-btn fab color="amber" small outlined>
@@ -127,6 +134,12 @@ export default Vue.extend({
       });
       //let documento = await BUSCAR(this.coleccion, "1PMqZ8yCWozDHTjWVuh0");
       //let documento = await ELIMINAR(this.coleccion, "1PMqZ8yCWozDHTjWVuh0");
+    },
+    async eliminar(id: string) {
+      await Swal.fire("Desea eliminarlo", "Acción irreversible", "question");
+      await ELIMINAR(this.coleccion, id);
+      this.filas = [];
+      await this.cargarInformacion();
     },
   },
   async created() {
