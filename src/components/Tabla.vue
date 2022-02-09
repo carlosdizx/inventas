@@ -38,9 +38,7 @@
           </v-btn>
         </template>
         <template v-slot:item.detalle="{ item }">
-          <v-btn @click="buscar(item.id)" icon color="primary" outlined>
-            <v-icon>mdi-eye</v-icon>
-          </v-btn>
+          <Detail :objeto="item" />
         </template>
         <template v-slot:item.calificacion="{ item }">
           <v-rating :value="item.calificacion" small dense readonly />
@@ -75,11 +73,11 @@ import Vue from "vue";
 import { BUSCAR, ELIMINAR, GUARDAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
 import { tipo_dato, toDateWithDetail } from "../formats/formats";
-import { Persona } from "@/models/Persona";
-import { lang } from "moment";
+import Detail from "@/components/Detail.vue";
 
 export default Vue.extend({
   name: "Tabla",
+  components: { Detail },
   data: () => ({
     buscado: "",
     filas: [],
