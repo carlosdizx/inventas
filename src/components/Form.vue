@@ -14,8 +14,18 @@
       </v-card-titulo>
       <v-card-text>
         <v-form autocomplete="off">
-          <v-text-field label="algo de texto" prepend-icon="mdi-home" counter />
-          <v-text-field label="algo de texto" prepend-icon="mdi-car" counter />
+          <div v-for="(campo, index) in campos" :key="index">
+            <v-text-field
+              v-if="campo.type === 1"
+              :label="campo.label"
+              :prepend-icon="campo.prepend_icon"
+            />
+            <v-combobox
+              v-if="campo.type === 2"
+              :label="campo.label"
+              :prepend-icon="campo.prepend_icon"
+            />
+          </div>
         </v-form>
       </v-card-text>
     </v-card>

@@ -19,7 +19,7 @@
               />
             </v-col>
             <v-col cols="2">
-              <Form />
+              <Form :titulo="titulo" :campos="campos" />
             </v-col>
           </v-row>
         </template>
@@ -72,9 +72,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { BUSCAR, ELIMINAR, GUARDAR, LISTAR } from "@/services/crud";
+import { BUSCAR, ELIMINAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
-import { tipo_dato, toDateWithDetail } from "../formats/formats";
+import { tipo_dato } from "../formats/formats";
 import Detail from "@/components/Detail.vue";
 import Form from "@/components/Form.vue";
 
@@ -84,6 +84,11 @@ export default Vue.extend({
   data: () => ({
     buscado: "",
     filas: [],
+    campos: [
+      { label: "Campo 1", prepend_icon: "mdi-home", type: 1 },
+      { label: "Campo 2", prepend_icon: "mdi-car", type: 2 },
+      { label: "Campo 3", prepend_icon: "mdi-airplane", type: 2 },
+    ],
   }),
   props: {
     coleccion: String,
