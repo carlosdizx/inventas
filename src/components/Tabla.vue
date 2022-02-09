@@ -30,6 +30,7 @@
             small
             outlined
             @click="eliminar(item.id)"
+            v-if="elimacion"
           >
             <v-icon>mdi-delete</v-icon>
           </v-btn>
@@ -87,6 +88,7 @@ export default Vue.extend({
     titulo: String,
     columnas: Array,
     llave: String,
+    elimacion: Boolean,
   },
   methods: {
     filtrarPorLlave(valor: any, buscado: any) {

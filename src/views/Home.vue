@@ -6,6 +6,14 @@
       titulo="Personas"
       :columnas="columnas"
       llave="documento"
+      :elimacion="true"
+    />
+    <Tabla
+      class="my-2"
+      coleccion="personas"
+      titulo="Personas"
+      :columnas="columnas"
+      llave="documento"
     />
     <!--
     <Tabla
