@@ -37,8 +37,8 @@
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
         </template>
-        <template v-slot:item.detalle="{}">
-          <v-btn icon color="primary" outlined>
+        <template v-slot:item.detalle="{ item }">
+          <v-btn @click="buscar(item.id)" icon color="primary" outlined>
             <v-icon>mdi-eye</v-icon>
           </v-btn>
         </template>
@@ -150,6 +150,13 @@ export default Vue.extend({
           await Swal.fire("Eliminado!", "", "success");
         }
       });
+    },
+    async buscar(id: string) {
+      console.log();
+      const datos = JSON.stringify(await BUSCAR(this.coleccion, id));
+      if (datos) {
+        await Swal.fire("Detalle", datos.toString());
+      }
     },
   },
   async created() {
