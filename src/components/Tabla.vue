@@ -11,15 +11,16 @@
         :custom-filter="filtrarPorLlave"
       >
         <template v-slot:top>
-          <v-row>
-            <v-text-field
-              v-model="buscado"
-              :label="'Buscar por \'' + llave + '\''"
-              class="mx-6"
-            />
-            <v-btn class="mx-4 my-6" fab dark color="info">
-              <v-icon dark>mdi-plus</v-icon>
-            </v-btn>
+          <v-row class="mx-2">
+            <v-col cols="10">
+              <v-text-field
+                v-model="buscado"
+                :label="'Buscar por \'' + llave + '\''"
+              />
+            </v-col>
+            <v-col cols="2">
+              <Form />
+            </v-col>
           </v-row>
         </template>
         <template v-slot:item.acciones="{ item }">
@@ -75,10 +76,11 @@ import { BUSCAR, ELIMINAR, GUARDAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
 import { tipo_dato, toDateWithDetail } from "../formats/formats";
 import Detail from "@/components/Detail.vue";
+import Form from "@/components/Form.vue";
 
 export default Vue.extend({
   name: "Tabla",
-  components: { Detail },
+  components: { Detail, Form },
   data: () => ({
     buscado: "",
     filas: [],
@@ -101,25 +103,6 @@ export default Vue.extend({
       );
     },
     async cargarInformacion() {
-      /**
-      for (let i = 0; i < 10; i++) {
-        const persona: Persona = {
-          nombres: "Nombres_" + i,
-          apellidos: "Apellidos" + i,
-          documento: 1082749250 + i + "",
-          fecha_nacimiento: { fecha: new Date() },
-          fecha_expedicion: { fecha: new Date() },
-          genero: "M",
-          correo: "correo@mail_" + i,
-          celular: "3026508102",
-          direccion: "Calle " + i,
-          salario: { moneda: 5000.56 },
-          calificacion: { calificacion: "4.5" },
-          estado: "Activo",
-        };
-        await GUARDAR(this.coleccion, persona);
-      }
-       */
       (await LISTAR(this.coleccion)).forEach((item) => {
         const obj = item.data();
         obj.id = item.id;
@@ -132,8 +115,6 @@ export default Vue.extend({
         });
         this.filas.push(obj);
       });
-      //let documento = await BUSCAR(this.coleccion, "1PMqZ8yCWozDHTjWVuh0");
-      //let documento = await ELIMINAR(this.coleccion, "1PMqZ8yCWozDHTjWVuh0");
     },
     async eliminar(id: string) {
       Swal.fire({
@@ -150,13 +131,6 @@ export default Vue.extend({
           await Swal.fire("Eliminado!", "", "success");
         }
       });
-    },
-    async buscar(id: string) {
-      console.log();
-      const datos = JSON.stringify(await BUSCAR(this.coleccion, id));
-      if (datos) {
-        await Swal.fire("Detalle", datos.toString());
-      }
     },
   },
   async created() {
