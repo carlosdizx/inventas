@@ -46,24 +46,54 @@
           <v-rating :value="item.calificacion" small dense readonly />
         </template>
         <template v-slot:item.estado="{ item }">
-          <v-icon color="green" v-if="item.estado === 'Activo'">
-            mdi-check-circle
-          </v-icon>
-          <v-icon color="red" v-if="item.estado === 'Inactivo'">
-            mdi-close-circle
-          </v-icon>
-          <v-icon color="warning" v-if="item.estado === 'Pendiente'">
-            mdi-alert-circle
-          </v-icon>
-          <v-icon color="blue" v-if="item.estado === 'Revisión'">
-            mdi-cube-scan
-          </v-icon>
-          <v-icon color="green" v-if="item.estado === 'Aprobado'">
-            mdi-cash-check
-          </v-icon>
-          <v-icon color="red" v-if="item.estado === 'Desaprobado'">
-            mdi-cash-remove
-          </v-icon>
+          <v-tooltip color="green" bottom v-if="item.estado === 'Activo'">
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon color="green" v-bind="attrs" v-on="on">
+                mdi-check-circle
+              </v-icon>
+            </template>
+            <span>Activo</span>
+          </v-tooltip>
+          <v-tooltip color="red" bottom v-if="item.estado === 'Inactivo'">
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon color="red" v-bind="attrs" v-on="on">
+                mdi-close-circle
+              </v-icon>
+            </template>
+            <span>Inactivo</span>
+          </v-tooltip>
+          <v-tooltip color="warning" bottom v-if="item.estado === 'Pendiente'">
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon color="warning" v-bind="attrs" v-on="on">
+                mdi-alert-circle
+              </v-icon>
+            </template>
+            <span>Pendiente</span>
+          </v-tooltip>
+          <v-tooltip color="primary" bottom v-if="item.estado === 'Revisión'">
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon color="primary" v-bind="attrs" v-on="on">
+                mdi-cube-scan
+              </v-icon>
+            </template>
+            <span>Revisión</span>
+          </v-tooltip>
+          <v-tooltip color="green" bottom v-if="item.estado === 'Aprobado'">
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon color="green" v-bind="attrs" v-on="on">
+                mdi-cash-check
+              </v-icon>
+            </template>
+            <span>Aprobado</span>
+          </v-tooltip>
+          <v-tooltip color="red" bottom v-if="item.estado === 'Desaprobado'">
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon color="red" v-bind="attrs" v-on="on">
+                mdi-cash-remove
+              </v-icon>
+            </template>
+            <span>Desaprobado</span>
+          </v-tooltip>
         </template>
       </v-data-table>
     </v-card-text>

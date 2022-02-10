@@ -20,6 +20,7 @@ export default Vue.extend({
   data: () => ({
     columnas: [
       { text: "Detalle", value: "detalle" },
+      { text: "ID RF", value: "id_rf" },
       { text: "Descripción corta", value: "descripción_corta" },
       { text: "Autor", value: "autor" },
       { text: "Prioridad", value: "calificacion" },
