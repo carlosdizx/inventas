@@ -20,6 +20,11 @@ const routes: Array<RouteConfig> = [
     name: "Asistance",
     component: () => import("../views/Asistance.vue"),
   },
+  {
+    path: "/requirements",
+    name: "Requirements",
+    component: () => import("../views/Requirements.vue"),
+  },
 ];
 
 const router = new VueRouter({
