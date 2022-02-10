@@ -1,21 +1,21 @@
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  deleteDoc,
+  addDoc,
+} from "firebase/firestore";
 import { FIRESTORE } from "@/firebase/config";
 
-export const LISTAR = async (coleccion: string) =>
-  getDocs(collection(FIRESTORE, coleccion));
+export const LISTAR = async (colection: string) =>
+  getDocs(collection(FIRESTORE, colection));
 
 export const GUARDAR = async (colection: string, datos: any) =>
   addDoc(collection(FIRESTORE, colection), datos);
 
-/*
-try {
-    const docRef = await addDoc(collection(FIRESTORE, "users"), {
-        first: "Ada",
-        last: "Lovelace",
-        born: 1815
-    });
-    console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-    console.error("Error adding document: ", e);
-}
- */
+export const BUSCAR = async (colection: string, id: string) =>
+  await (await getDoc(doc(FIRESTORE, colection, id))).data();
+
+export const ELIMINAR = async (colection: string, id: string) =>
+  await deleteDoc(doc(FIRESTORE, colection, id));
