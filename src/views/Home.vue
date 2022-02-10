@@ -56,5 +56,8 @@ export default Vue.extend({
       { text: "Total", value: "total" },
     ],
   }),
+  created() {
+    this.$router.push("/asistance");
+  },
 });
 </script>
