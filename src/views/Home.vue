@@ -57,7 +57,7 @@ export default Vue.extend({
     ],
   }),
   created() {
-    this.$router.push("/asistance");
+    //this.$router.push("/asistance");
   },
 });
 </script>
