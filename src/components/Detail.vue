@@ -36,7 +36,7 @@
 export default {
   name: "Detail",
   data: () => ({
-    dialog: false,
+    dialog_details: false,
     llaves: [],
     valores: [],
   }),

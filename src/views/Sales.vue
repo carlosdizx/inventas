@@ -2,11 +2,11 @@
   <v-container>
     <CRUD
       class="my-2"
-      coleccion="sales"
+      coleccion="personas"
       :paginador="paginador"
-      titulo="Ventas"
+      titulo="Personas"
       :columnas="columnas"
-      llave="id"
+      llave="documento"
       :elimacion="true"
     />
   </v-container>
@@ -21,9 +21,13 @@ export default {
     paginador: 15,
     columnas: [
       { text: "Detalle", value: "detalle", align: "start", sortable: false },
-      { text: "Subtotal $", value: "subtotal" },
-      { text: "Descuento %", value: "descuento" },
-      { text: "Total $", value: "total" },
+      { text: "Nombres", value: "nombres" },
+      { text: "Apellidos", value: "apellidos" },
+      { text: "Documento", value: "documento" },
+      { text: "Fecha de nacimiento", value: "fecha_nacimiento" },
+      { text: "Fecha de expedición", value: "fecha_expedicion" },
+      { text: "Género", value: "genero" },
+      { text: "Salario", value: "salario" },
       { text: "Calificación", value: "calificacion" },
       { text: "Estado", value: "estado" },
       { text: "Acciones", value: "acciones", sortable: false },

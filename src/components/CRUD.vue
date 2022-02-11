@@ -107,7 +107,42 @@
           </v-tooltip>
         </template>
         <template v-slot:item.detalle="{ item }">
-          {{ item.id }}
+          <v-dialog v-model="dialog_details" persistent max-width="600">
+            <v-btn
+              color="red darken-4"
+              dark
+              @click="dialog_details = !dialog_details"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                fab
+                small
+                color="info darken-3"
+                v-bind="attrs"
+                v-on="on"
+                outlined
+              >
+                <v-icon>mdi-eye</v-icon>
+              </v-btn>
+            </template>
+            <v-card>
+              <v-list>
+                <v-subheader>Detalle</v-subheader>
+                <v-list-item-group>
+                  {{ item }}
+                </v-list-item-group>
+              </v-list>
+            </v-card>
+            <v-btn
+              color="red darken-4"
+              dark
+              @click="dialog_details = !dialog_details"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-dialog>
         </template>
       </v-data-table>
     </v-card-text>
@@ -115,11 +150,17 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from "vue";
+import { ELIMINAR, LISTAR } from "@/services/crud";
+import { tipo_dato } from "@/formats/formats";
+import Swal from "sweetalert2";
+
+export default Vue.extend({
   name: "CRUD",
   data: () => ({
     buscado: "",
     filas: [],
+    dialog_details: false,
   }),
   props: {
     coleccion: String,
@@ -141,8 +182,41 @@ export default {
           -1
       );
     },
+    async cargarInformacion() {
+      (await LISTAR(this.coleccion)).forEach((item) => {
+        const obj = JSON.parse(JSON.stringify(item.data()));
+        obj.id = item.id;
+        Object.values(obj).map((value: any, index: number) => {
+          if (typeof value === "object" && value) {
+            value = tipo_dato(value);
+            const key: string = Object.keys(obj)[index].toString();
+            obj[key] = value;
+          }
+        });
+        this.filas.push(obj);
+      });
+    },
+    async eliminar(id: string) {
+      Swal.fire({
+        title: "¿Desea eliminar el registro?",
+        showDenyButton: true,
+        confirmButtonText: "Eliminar",
+        confirmButtonColor: "green",
+        denyButtonText: `No aún no!`,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await ELIMINAR(this.coleccion, id);
+          this.filas = [];
+          await this.cargarInformacion();
+          await Swal.fire("Eliminado!", "", "success");
+        }
+      });
+    },
   },
-};
+  async created() {
+    await this.cargarInformacion();
+  },
+});
 </script>
 
 <style scoped></style>

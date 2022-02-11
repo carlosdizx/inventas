@@ -39,7 +39,7 @@
 export default {
   name: "Form",
   data: () => ({
-    dialog: false,
+    dialog_details: false,
   }),
   props: {
     titulo: String,
