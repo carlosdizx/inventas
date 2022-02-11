@@ -19,7 +19,7 @@
               />
             </v-col>
             <v-col cols="2">
-              <Form :titulo="titulo" :campos="campos" />
+              <Form :titulo="titulo" :campos_form="campos_form" />
             </v-col>
           </v-row>
         </template>
@@ -115,7 +115,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { BUSCAR, ELIMINAR, LISTAR } from "@/services/crud";
+import { ELIMINAR, LISTAR } from "@/services/crud";
 import Swal from "sweetalert2";
 import { tipo_dato } from "../formats/formats";
 import Detail from "@/components/Detail.vue";
@@ -127,11 +127,6 @@ export default Vue.extend({
   data: () => ({
     buscado: "",
     filas: [],
-    campos: [
-      { label: "Campo 1", prepend_icon: "mdi-home", type: 1 },
-      { label: "Campo 2", prepend_icon: "mdi-car", type: 2 },
-      { label: "Campo 3", prepend_icon: "mdi-airplane", type: 2 },
-    ],
   }),
   props: {
     coleccion: String,
@@ -139,6 +134,7 @@ export default Vue.extend({
     columnas: Array,
     llave: String,
     elimacion: Boolean,
+    campos_form: Array,
   },
   methods: {
     filtrarPorLlave(valor: any, buscado: any) {

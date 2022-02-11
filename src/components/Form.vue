@@ -14,7 +14,7 @@
       </v-card-titulo>
       <v-card-text>
         <v-form autocomplete="off">
-          <div v-for="(campo, index) in campos" :key="index">
+          <div v-for="(campo, index) in campos_form" :key="index">
             <v-text-field
               v-if="campo.type === 1"
               :label="campo.label"
@@ -43,7 +43,7 @@ export default {
   }),
   props: {
     titulo: String,
-    campos: Array,
+    campos_form: Array,
   },
 };
 </script>

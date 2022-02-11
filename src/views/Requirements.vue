@@ -6,6 +6,7 @@
       titulo="Requerimientos"
       :columnas="columnas"
       llave="id_llave"
+      :campos_form="campos_form"
     />
   </v-container>
 </template>
@@ -26,6 +27,13 @@ export default Vue.extend({
       { text: "Prioridad", value: "calificacion" },
       { text: "Tiempo (horas)", value: "tiempo" },
       { text: "estado", value: "estado" },
+    ],
+    campos_form: [
+      { label: "Campo 1", prepend_icon: "mdi-home", type: 1 },
+      { label: "Campo 2", prepend_icon: "mdi-car", type: 2 },
+      { label: "Campo 3", prepend_icon: "mdi-airplane", type: 2 },
+      { label: "Campo 3", prepend_icon: "mdi-airplane", type: 2 },
+      { label: "Campo 3", prepend_icon: "mdi-airplane", type: 2 },
     ],
   }),
 });
