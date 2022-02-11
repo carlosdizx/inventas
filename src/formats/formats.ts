@@ -22,7 +22,7 @@ export const tipo_dato = (valor: any) => {
     } else if (key === "moneda") {
       aux = "$" + toNumber(dato);
     } else if (key === "calificacion") {
-      aux = parseInt(dato);
+      aux = parseFloat(dato);
     } else {
       console.log(dato);
       aux = "Error en formato";

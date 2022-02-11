@@ -43,7 +43,20 @@
           <Detail :objeto="item" />
         </template>
         <template v-slot:item.calificacion="{ item }">
-          <v-rating :value="item.calificacion" small dense readonly />
+          <v-tooltip color="primary" bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <span v-bind="attrs" v-on="on">
+                <v-rating
+                  :value="item.calificacion"
+                  small
+                  dense
+                  readonly
+                  half-increments
+                />
+              </span>
+            </template>
+            <span>{{ item.calificacion }}</span>
+          </v-tooltip>
         </template>
         <template v-slot:item.estado="{ item }">
           <v-tooltip color="green" bottom v-if="item.estado === 'Activo'">
