@@ -21,7 +21,7 @@
         <v-subheader>Detalle</v-subheader>
         <v-list-item-group>
           <v-list-item v-for="(item, index) in llaves" :key="index">
-            {{ item.toUpperCase() }}: {{ valores[index] }}
+            {{ item }}: {{ valores[index] }}
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -41,6 +41,7 @@ export default {
     valores: [],
   }),
   props: {
+    campos_detalle: Array,
     objeto: Object,
   },
   methods: {

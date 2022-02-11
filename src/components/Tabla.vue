@@ -40,7 +40,7 @@
           </v-btn>
         </template>
         <template v-slot:item.detalle="{ item }">
-          <Detail :objeto="item" />
+          <Detail :campos_detalle="campos_detalle" :objeto="item" />
         </template>
         <template v-slot:item.calificacion="{ item }">
           <v-tooltip color="primary" bottom>
@@ -134,6 +134,7 @@ export default Vue.extend({
     columnas: Array,
     llave: String,
     elimacion: Boolean,
+    campos_detalle: Array,
     campos_form: Array,
   },
   methods: {
@@ -148,7 +149,7 @@ export default Vue.extend({
     },
     async cargarInformacion() {
       (await LISTAR(this.coleccion)).forEach((item) => {
-        let obj = JSON.parse(JSON.stringify(item.data()));
+        const obj = JSON.parse(JSON.stringify(item.data()));
         obj.id = item.id;
         Object.values(obj).map((value: any, index: number) => {
           if (typeof value === "object" && value) {

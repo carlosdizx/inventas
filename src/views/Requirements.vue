@@ -28,6 +28,14 @@ export default Vue.extend({
       { text: "Tiempo (horas)", value: "tiempo" },
       { text: "estado", value: "estado" },
     ],
+    campos_detalle: [
+      { text: "ID RF", value: "id_rf" },
+      { text: "Descripción corta", value: "descripción_corta" },
+      { text: "Autor", value: "autor" },
+      { text: "Prioridad", value: "calificacion" },
+      { text: "Tiempo (horas)", value: "tiempo" },
+      { text: "estado", value: "estado" },
+    ],
     campos_form: [
       { label: "Campo 1", prepend_icon: "mdi-home", type: 1 },
       { label: "Campo 2", prepend_icon: "mdi-car", type: 2 },
