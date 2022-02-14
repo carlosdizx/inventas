@@ -1,6 +1,6 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="600">
-    <v-btn color="red darken-4" dark @click="dialog = !dialog">
+  <v-dialog v-model="dialog_details" persistent max-width="600">
+    <v-btn color="red darken-4" dark @click="dialog_details = !dialog_details">
       <v-icon>mdi-close</v-icon>
     </v-btn>
     <template v-slot:activator="{ on, attrs }">
@@ -26,7 +26,7 @@
         </v-list-item-group>
       </v-list>
     </v-card>
-    <v-btn color="red darken-4" dark @click="dialog = !dialog">
+    <v-btn color="red darken-4" dark @click="dialog_details = !dialog_details">
       <v-icon>mdi-close</v-icon>
     </v-btn>
   </v-dialog>
@@ -47,8 +47,18 @@ export default {
   methods: {
     async cargarInformacion() {
       this.llaves = await Object.keys(this.objeto);
+      this.llaves.forEach((llave, index) => {
+        this.campos_detalle.forEach((detail) => {
+          if (llave === detail.value) {
+            this.llaves[index] = detail.text;
+          }
+        });
+      });
       this.valores = await Object.values(this.objeto);
     },
+  },
+  created() {
+    this.cargarInformacion();
   },
 };
 </script>

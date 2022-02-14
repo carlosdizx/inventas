@@ -33,9 +33,9 @@ export default {
       { text: "Acciones", value: "acciones", sortable: false },
     ],
     campos_detalle: [
-      { text: "Subtotal", value: "subtotal" },
-      { text: "Descuento %", value: "descuento" },
-      { text: "Total", value: "total" },
+      { text: "Nombres", value: "nombres" },
+      { text: "Apellidos", value: "apellidos" },
+      { text: "Documento", value: "documento" },
     ],
   }),
 };

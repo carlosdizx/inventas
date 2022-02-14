@@ -6,6 +6,7 @@
       titulo="Personas"
       :columnas="columnas"
       llave="documento"
+      :campos_detalle="campos_detalle"
       :elimacion="true"
     />
     <Tabla
@@ -14,6 +15,7 @@
       titulo="Personas"
       :columnas="columnas"
       llave="documento"
+      :campos_detalle="campos_detalle"
     />
     <!--
     <Tabla
@@ -48,12 +50,16 @@ export default Vue.extend({
       { text: "Estado", value: "estado" },
       { text: "Acciones", value: "acciones" },
     ],
-    columnas_ventas: [
-      { text: "Detalle", value: "detalle" },
-      { text: "Fecha de generación", value: "fecha_generacion" },
-      { text: "Subtotal", value: "subtotal" },
-      { text: "Descuento", value: "descuento" },
-      { text: "Total", value: "total" },
+    campos_detalle: [
+      { text: "Nombres", value: "nombres" },
+      { text: "Apellidos", value: "apellidos" },
+      { text: "Documento", value: "documento" },
+      { text: "Fecha de nacimiento", value: "fecha_nacimiento" },
+      { text: "Fecha de expedición", value: "fecha_expedicion" },
+      { text: "Género", value: "genero" },
+      { text: "Salario", value: "salario" },
+      { text: "Calificación", value: "calificacion" },
+      { text: "Estado", value: "estado" },
     ],
   }),
   created() {

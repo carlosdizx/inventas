@@ -107,42 +107,7 @@
           </v-tooltip>
         </template>
         <template v-slot:item.detalle="{ item }">
-          <v-dialog v-model="dialog_details" persistent max-width="600">
-            <v-btn
-              color="red darken-4"
-              dark
-              @click="dialog_details = !dialog_details"
-            >
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                fab
-                small
-                color="info darken-3"
-                v-bind="attrs"
-                v-on="on"
-                outlined
-              >
-                <v-icon>mdi-eye</v-icon>
-              </v-btn>
-            </template>
-            <v-card>
-              <v-list>
-                <v-subheader>Detalle</v-subheader>
-                <v-list-item-group>
-                  {{ item }}
-                </v-list-item-group>
-              </v-list>
-            </v-card>
-            <v-btn
-              color="red darken-4"
-              dark
-              @click="dialog_details = !dialog_details"
-            >
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-          </v-dialog>
+          <Detail :campos_detalle="campos_detalle" :objeto="item" />
         </template>
       </v-data-table>
     </v-card-text>
@@ -154,9 +119,11 @@ import Vue from "vue";
 import { ELIMINAR, LISTAR } from "@/services/crud";
 import { tipo_dato } from "@/formats/formats";
 import Swal from "sweetalert2";
+import Detail from "@/components/Detail.vue";
 
 export default Vue.extend({
   name: "CRUD",
+  components: { Detail },
   data: () => ({
     buscado: "",
     filas: [],
@@ -211,6 +178,9 @@ export default Vue.extend({
           await Swal.fire("Eliminado!", "", "success");
         }
       });
+    },
+    async cambiarEstadoDetail() {
+      this.dialog_details = !this.dialog_details;
     },
   },
   async created() {

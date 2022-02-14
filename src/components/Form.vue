@@ -1,6 +1,6 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="600">
-    <v-btn color="red darken-4" dark @click="dialog = !dialog">
+  <v-dialog v-model="dialog_form" persistent max-width="600">
+    <v-btn color="red darken-4" dark @click="dialog_form = !dialog_form">
       <v-icon>mdi-close</v-icon>
     </v-btn>
     <template v-slot:activator="{ on, attrs }">
@@ -29,7 +29,7 @@
         </v-form>
       </v-card-text>
     </v-card>
-    <v-btn color="red darken-4" dark @click="dialog = !dialog">
+    <v-btn color="red darken-4" dark @click="dialog_form = !dialog_form">
       <v-icon>mdi-close</v-icon>
     </v-btn>
   </v-dialog>
@@ -39,7 +39,7 @@
 export default {
   name: "Form",
   data: () => ({
-    dialog_details: false,
+    dialog_form: false,
   }),
   props: {
     titulo: String,
