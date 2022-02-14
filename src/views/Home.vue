@@ -49,8 +49,28 @@ export default Vue.extend({
     ],
     campos_form: [
       { label: "Campo de texto 1", prepend_icon: "mdi-home", type: 1 },
-      { label: "Campo de texto 2", prepend_icon: "mdi-airplane", type: 2 },
-      { label: "Campo de texto 3", prepend_icon: "mdi-account", type: 2 },
+      {
+        label: "Campo de texto 2",
+        prepend_icon: "mdi-airplane",
+        type: 2,
+        items: [
+          { a1: 1, a2: 2 },
+          { a1: 3, a2: 4 },
+          { a1: 5, a2: 6 },
+        ],
+        llave: "a1",
+      },
+      {
+        label: "Campo de texto 3",
+        prepend_icon: "mdi-account",
+        type: 2,
+        items: [
+          { b1: "voces", b2: 2 },
+          { b1: "locas", b2: 4 },
+          { b1: "en mi cabez", b2: 6 },
+        ],
+        llave: "b2",
+      },
     ],
   }),
   created() {

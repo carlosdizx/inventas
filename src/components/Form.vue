@@ -24,6 +24,12 @@
               v-if="campo.type === 2"
               :label="campo.label"
               :prepend-icon="campo.prepend_icon"
+              :items="campo.items"
+              :item-text="campo.llave"
+              hide-selected
+              small-chips
+              dense
+              outlined
             />
           </div>
         </v-form>
