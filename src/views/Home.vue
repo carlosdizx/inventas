@@ -3,29 +3,12 @@
     <Tabla
       class="my-2"
       coleccion="personas"
-      titulo="Personas"
+      titulo="personas"
       :columnas="columnas"
       llave="documento"
       :campos_detalle="campos_detalle"
-      :elimacion="true"
+      :campos_form="campos_form"
     />
-    <Tabla
-      class="my-2"
-      coleccion="personas"
-      titulo="Personas"
-      :columnas="columnas"
-      llave="documento"
-      :campos_detalle="campos_detalle"
-    />
-    <!--
-    <Tabla
-      class="my-2"
-      coleccion="ventas"
-      titulo="Ventas"
-      :columnas="columnas_ventas"
-      llave="fecha"
-    />
-    -->
   </v-container>
 </template>
 
@@ -63,6 +46,11 @@ export default Vue.extend({
       { text: "Celular", value: "celular" },
       { text: "Correo", value: "correo" },
       { text: "Dirección", value: "direccion" },
+    ],
+    campos_form: [
+      { label: "Campo de texto 1", prepend_icon: "mdi-home", type: 1 },
+      { label: "Campo de texto 2", prepend_icon: "mdi-airplane", type: 2 },
+      { label: "Campo de texto 3", prepend_icon: "mdi-account", type: 2 },
     ],
   }),
   created() {

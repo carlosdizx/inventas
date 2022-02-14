@@ -8,13 +8,13 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
-    <v-card>
-      <v-card-titulo>
-        <h1>Formulario de creación para {{ titulo }}</h1>
-      </v-card-titulo>
+    <v-card class="py-2">
+      <v-card-text>
+        <h1>Formulario de creación para {{ titulo_form }}</h1>
+      </v-card-text>
       <v-card-text>
         <v-form autocomplete="off">
-          <div v-for="(campo, index) in campos_form" :key="index">
+          <div v-for="(campo, index) in campos" :key="index">
             <v-text-field
               v-if="campo.type === 1"
               :label="campo.label"
@@ -40,10 +40,23 @@ export default {
   name: "Form",
   data: () => ({
     dialog_form: false,
+    titulo_form: "",
+    campos: [],
   }),
   props: {
     titulo: String,
     campos_form: Array,
+  },
+  methods: {
+    cargarInformacion() {
+      this.titulo_form = this.titulo;
+      this.campos_form.forEach((campo) => {
+        this.campos.push(campo);
+      });
+    },
+  },
+  created() {
+    this.cargarInformacion();
   },
 };
 </script>

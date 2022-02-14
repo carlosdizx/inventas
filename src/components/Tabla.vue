@@ -83,9 +83,9 @@
             </template>
             <span>Pendiente</span>
           </v-tooltip>
-          <v-tooltip color="primary" bottom v-if="item.estado === 'Revisión'">
+          <v-tooltip color="purple" bottom v-if="item.estado === 'Revisión'">
             <template v-slot:activator="{ on, attrs }">
-              <v-icon color="primary" v-bind="attrs" v-on="on">
+              <v-icon color="purple" v-bind="attrs" v-on="on">
                 mdi-cube-scan
               </v-icon>
             </template>
