@@ -60,6 +60,9 @@ export default Vue.extend({
       { text: "Salario", value: "salario" },
       { text: "Calificación", value: "calificacion" },
       { text: "Estado", value: "estado" },
+      { text: "Celular", value: "celular" },
+      { text: "Correo", value: "correo" },
+      { text: "Dirección", value: "direccion" },
     ],
   }),
   created() {
