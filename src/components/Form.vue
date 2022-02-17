@@ -19,6 +19,9 @@
               v-if="campo.type === 1"
               :label="campo.label"
               :prepend-icon="campo.prepend_icon"
+              dense
+              outlined
+              required
             />
             <v-combobox
               v-if="campo.type === 2"
@@ -26,10 +29,12 @@
               :prepend-icon="campo.prepend_icon"
               :items="campo.items"
               :item-text="campo.llave"
+              :multiple="campo.multiple"
               hide-selected
               small-chips
               dense
               outlined
+              required
             />
           </div>
         </v-form>

@@ -58,7 +58,7 @@ export default Vue.extend({
           { a1: 3, a2: 4 },
           { a1: 5, a2: 6 },
         ],
-        llave: "a1",
+        llave: "a2",
       },
       {
         label: "Campo de texto 3",
@@ -70,6 +70,7 @@ export default Vue.extend({
           { b1: "en mi cabez", b2: 6 },
         ],
         llave: "b2",
+        multiple: true,
       },
     ],
   }),
