@@ -6,6 +6,7 @@
       titulo="Requerimientos"
       :columnas="columnas"
       llave="id_llave"
+      :campos_detalle="campos_detalle"
       :campos_form="campos_form"
     />
   </v-container>
@@ -20,7 +21,6 @@ export default Vue.extend({
   components: { Tabla },
   data: () => ({
     columnas: [
-      { text: "Detalle", value: "detalle" },
       { text: "ID RF", value: "id_rf" },
       { text: "Descripción corta", value: "descripción_corta" },
       { text: "Autor", value: "autor" },
@@ -34,22 +34,32 @@ export default Vue.extend({
       { text: "Autor", value: "autor" },
       { text: "Prioridad", value: "calificacion" },
       { text: "Tiempo (horas)", value: "tiempo" },
-      { text: "estado", value: "estado" },
+      { text: "Estado", value: "estado" },
     ],
     campos_form: [
-      { label: "Campo 1", prepend_icon: "mdi-home", type: 1 },
+      { label: "Campo 1", prepend_icon: "mdi-home", type: 1, format: "number" },
+      { label: "Campo 1.5", prepend_icon: "mdi-home", type: 1, format: "text" },
       { label: "Campo 2", prepend_icon: "mdi-car", type: 2 },
       { label: "Campo 3", prepend_icon: "mdi-airplane", type: 2 },
       { label: "Campo 4", prepend_icon: "mdi-arrow-left", type: 2 },
       { label: "Campo 5", prepend_icon: "mdi-close", type: 2 },
-      { label: "Campo 6", prepend_icon: "mdi-air-horn", type: 2 },
+      {
+        label: "Campo 6",
+        prepend_icon: "mdi-air-horn",
+        type: 2,
+        items: [
+          { id: 1, nombre: "opc 1" },
+          { id: 2, nombre: "opc 2" },
+          { id: 3, nombre: "opc 3" },
+        ],
+        llave: "nombre",
+      },
       { label: "Campo 7", prepend_icon: "mdi-air-horn", type: 3 },
       { label: "Campo 8", prepend_icon: "mdi-badge-account-alert", type: 4 },
       { label: "Campo 9", prepend_icon: "mdi-badge-account-alert", type: 4 },
       { label: "Campo 10", prepend_icon: "mdi-badge-account-alert", type: 4 },
-      { label: "Campo 11", prepend_icon: "mdi-badge-account-alert", type: 5 },
       {
-        label: "Campo 12",
+        label: "Campo 11",
         type: 5,
         options: [
           { value: "1", label: "Opc 1" },
@@ -62,6 +72,18 @@ export default Vue.extend({
           { value: "8", label: "Opc 8" },
         ],
         model: {},
+      },
+      {
+        label: "Campo 12",
+        prepend_icon: "mdi-badge-account-alert",
+        type: 6,
+        items: ["Text 1", "Text 2", "Text 3", "Text 4"],
+      },
+      {
+        label: "Campo 13",
+        prepend_icon: "mdi-account",
+        type: 6,
+        items: ["Text 1", "Text 2", "Text 3", "Text 4"],
       },
     ],
   }),

@@ -42,17 +42,29 @@
               :label="campo.label"
               :prepend-icon="campo.prepend_icon"
               dense
+              counter
             />
-            <v-switch v-if="campo.type === 4" inset :label="campo.label" />
-            <div v-if="campo.type === 5">{{ radios }}</div>
-            <v-radio-group row>
+            <v-switch
+              color="deep-purple"
+              v-if="campo.type === 4"
+              inset
+              :label="campo.label"
+            />
+            <v-radio-group :label="campo.label" v-if="campo.type === 5" row>
+              <br />
               <v-radio
                 v-for="dato in campo.options"
                 :key="dato.value"
                 :label="dato.label"
                 :value="dato.value"
-              ></v-radio>
+              />
             </v-radio-group>
+            <v-select
+              v-if="campo.type === 6"
+              :items="campo.items"
+              :label="campo.label"
+              solo
+            />
           </div>
         </v-form>
       </v-card-text>
