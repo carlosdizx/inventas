@@ -36,13 +36,15 @@ export default Vue.extend({
       { text: "Tiempo (horas)", value: "tiempo" },
       { text: "Estado", value: "estado" },
     ],
+    objeto: {},
     campos_form: [
-      { label: "Campo 1", prepend_icon: "mdi-home", type: 1, format: "number" },
-      { label: "Campo 1.5", prepend_icon: "mdi-home", type: 1, format: "text" },
-      { label: "Campo 2", prepend_icon: "mdi-car", type: 2 },
-      { label: "Campo 3", prepend_icon: "mdi-airplane", type: 2 },
-      { label: "Campo 4", prepend_icon: "mdi-arrow-left", type: 2 },
-      { label: "Campo 5", prepend_icon: "mdi-close", type: 2 },
+      {
+        label: "Campo 1",
+        prepend_icon: "mdi-home",
+        type: 1,
+        format: "number",
+        required: "required",
+      },
       {
         label: "Campo 6",
         prepend_icon: "mdi-air-horn",
@@ -56,8 +58,6 @@ export default Vue.extend({
       },
       { label: "Campo 7", prepend_icon: "mdi-air-horn", type: 3 },
       { label: "Campo 8", prepend_icon: "mdi-badge-account-alert", type: 4 },
-      { label: "Campo 9", prepend_icon: "mdi-badge-account-alert", type: 4 },
-      { label: "Campo 10", prepend_icon: "mdi-badge-account-alert", type: 4 },
       {
         label: "Campo 11",
         type: 5,
@@ -71,17 +71,10 @@ export default Vue.extend({
           { value: "7", label: "Opc 7" },
           { value: "8", label: "Opc 8" },
         ],
-        model: {},
       },
       {
         label: "Campo 12",
         prepend_icon: "mdi-badge-account-alert",
-        type: 6,
-        items: ["Text 1", "Text 2", "Text 3", "Text 4"],
-      },
-      {
-        label: "Campo 13",
-        prepend_icon: "mdi-account",
         type: 6,
         items: ["Text 1", "Text 2", "Text 3", "Text 4"],
       },

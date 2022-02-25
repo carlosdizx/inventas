@@ -14,14 +14,17 @@
       </v-card-text>
       <v-card-text>
         <v-form autocomplete="off">
+          {{ objeto_form }}
           <div v-for="(campo, index) in campos" :key="index">
             <v-text-field
               v-if="campo.type === 1"
               :label="campo.label"
               :prepend-icon="campo.prepend_icon"
+              :type="campo.format"
               dense
               outlined
-              required
+              :required="campo.required"
+              v-model="objeto_form"
             />
             <v-combobox
               v-if="campo.type === 2"
@@ -66,6 +69,9 @@
               solo
             />
           </div>
+          <v-card-actions>
+            <v-btn block color="success" type="submit">Registrar</v-btn>
+          </v-card-actions>
         </v-form>
       </v-card-text>
     </v-card>
@@ -80,16 +86,19 @@ export default {
   name: "Form",
   data: () => ({
     dialog_form: false,
+    objeto_form: null,
     titulo_form: "",
     campos: [],
   }),
   props: {
     titulo: String,
+    objeto: Object,
     campos_form: Array,
   },
   methods: {
     cargarInformacion() {
       this.titulo_form = this.titulo;
+      this.objeto_form = this.objeto;
       this.campos_form.forEach((campo) => {
         this.campos.push(campo);
       });

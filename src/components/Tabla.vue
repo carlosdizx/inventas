@@ -19,7 +19,11 @@
               />
             </v-col>
             <v-col cols="2">
-              <Form :titulo="titulo" :campos_form="campos_form" />
+              <Form
+                :titulo="titulo"
+                :campos_form="campos_form"
+                :objeto="objeto_form"
+              />
             </v-col>
           </v-row>
         </template>
@@ -135,6 +139,7 @@ export default Vue.extend({
     llave: String,
     elimacion: Boolean,
     campos_detalle: Array,
+    objeto_form: Object,
     campos_form: Array,
   },
   methods: {
