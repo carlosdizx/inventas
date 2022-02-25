@@ -19,11 +19,7 @@
               />
             </v-col>
             <v-col cols="2">
-              <Form
-                :titulo="titulo"
-                :campos_form="campos_form"
-                :objeto="objeto_form"
-              />
+              <Form :titulo="titulo" :campos_form="campos_form" />
             </v-col>
           </v-row>
         </template>

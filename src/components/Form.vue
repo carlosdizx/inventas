@@ -13,8 +13,7 @@
         <h1>Formulario de creación para {{ titulo_form }}</h1>
       </v-card-text>
       <v-card-text>
-        <v-form autocomplete="off">
-          {{ objeto_form }}
+        <v-form autocomplete="off" @submit.prevent="capturarCampos">
           <div v-for="(campo, index) in campos" :key="index">
             <v-text-field
               v-if="campo.type === 1"
@@ -24,7 +23,7 @@
               dense
               outlined
               :required="campo.required"
-              v-model="objeto_form"
+              v-model="campo.model"
             />
             <v-combobox
               v-if="campo.type === 2"
@@ -38,6 +37,7 @@
               dense
               outlined
               required
+              v-model="campo.model"
             />
             <v-textarea
               v-if="campo.type === 3"
@@ -46,14 +46,21 @@
               :prepend-icon="campo.prepend_icon"
               dense
               counter
+              v-model="campo.model"
             />
             <v-switch
               color="deep-purple"
               v-if="campo.type === 4"
               inset
               :label="campo.label"
+              v-model="campo.model"
             />
-            <v-radio-group :label="campo.label" v-if="campo.type === 5" row>
+            <v-radio-group
+              :label="campo.label"
+              v-if="campo.type === 5"
+              row
+              v-model="campo.model"
+            >
               <br />
               <v-radio
                 v-for="dato in campo.options"
@@ -67,6 +74,7 @@
               :items="campo.items"
               :label="campo.label"
               solo
+              v-model="campo.model"
             />
           </div>
           <v-card-actions>
@@ -86,21 +94,24 @@ export default {
   name: "Form",
   data: () => ({
     dialog_form: false,
-    objeto_form: null,
     titulo_form: "",
     campos: [],
+    key_value: [],
   }),
   props: {
     titulo: String,
-    objeto: Object,
     campos_form: Array,
   },
   methods: {
     cargarInformacion() {
       this.titulo_form = this.titulo;
-      this.objeto_form = this.objeto;
       this.campos_form.forEach((campo) => {
         this.campos.push(campo);
+      });
+    },
+    capturarCampos() {
+      this.campos_form.forEach((campo) => {
+        console.log(campo.name + ":" + campo.model);
       });
     },
   },
