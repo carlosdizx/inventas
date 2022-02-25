@@ -36,6 +36,23 @@
               outlined
               required
             />
+            <v-textarea
+              v-if="campo.type === 3"
+              outlined
+              :label="campo.label"
+              :prepend-icon="campo.prepend_icon"
+              dense
+            />
+            <v-switch v-if="campo.type === 4" inset :label="campo.label" />
+            <div v-if="campo.type === 5">{{ radios }}</div>
+            <v-radio-group row>
+              <v-radio
+                v-for="dato in campo.options"
+                :key="dato.value"
+                :label="dato.label"
+                :value="dato.value"
+              ></v-radio>
+            </v-radio-group>
           </div>
         </v-form>
       </v-card-text>

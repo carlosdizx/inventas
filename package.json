@@ -15,7 +15,7 @@
     "firebase": "^9.6.4",
     "moment": "^2.29.1",
     "roboto-fontface": "*",
-    "sweetalert2": "^11.3.10",
+    "sweetalert2": "^11.4.4",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.0",
