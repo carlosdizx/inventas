@@ -131,7 +131,7 @@ export default Vue.extend({
   components: { Detail, Form },
   data: () => ({
     buscado: "",
-    filas: [],
+    filas: [""],
   }),
   props: {
     coleccion: String,
@@ -156,7 +156,7 @@ export default Vue.extend({
     async cargarInformacion() {
       this.filas = [];
       (await LISTAR(this.coleccion)).forEach((item) => {
-        const obj = JSON.parse(JSON.stringify(item.data()));
+        const obj: any = JSON.parse(JSON.stringify(item.data()));
         obj.id = item.id;
         Object.values(obj).map((value: any, index: number) => {
           if (typeof value === "object" && value) {
