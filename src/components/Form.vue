@@ -13,7 +13,7 @@
         <h1>Formulario de creación para {{ titulo_form }}</h1>
       </v-card-text>
       <v-card-text>
-        <v-form autocomplete="off" @submit.prevent="capturarCampos">
+        <v-form autocomplete="off" @submit.prevent="registrarFormulario">
           <div v-for="(campo, index) in campos" :key="index">
             <v-text-field
               v-if="campo.type === 1"
@@ -22,7 +22,6 @@
               :type="campo.format"
               dense
               outlined
-              :required="campo.required"
               v-model="campo.model"
             />
             <v-combobox
@@ -36,7 +35,6 @@
               small-chips
               dense
               outlined
-              required
               v-model="campo.model"
             />
             <v-textarea
@@ -90,6 +88,8 @@
 </template>
 
 <script>
+import { GUARDAR } from "@/services/crud";
+
 export default {
   name: "Form",
   data: () => ({
@@ -97,10 +97,13 @@ export default {
     titulo_form: "",
     campos: [],
     key_value: [],
+    coleccion_form: "",
+    datos: {},
   }),
   props: {
     titulo: String,
     campos_form: Array,
+    coleccion: String,
   },
   methods: {
     cargarInformacion() {
@@ -109,13 +112,18 @@ export default {
         this.campos.push(campo);
       });
     },
-    capturarCampos() {
+    async capturarCampos() {
       this.campos_form.forEach((campo) => {
-        console.log(campo.name + ":" + campo.model);
+        this.datos[campo.name] = campo.model;
       });
+    },
+    async registrarFormulario() {
+      await this.capturarCampos();
+      await GUARDAR(this.coleccion_form, this.datos);
     },
   },
   created() {
+    this.coleccion_form = this.coleccion;
     this.cargarInformacion();
   },
 };
