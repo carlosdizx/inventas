@@ -14,6 +14,7 @@
 
 <script lang="ts">
 import Tabla from "@/components/Tabla.vue";
+import { CAMPOS } from "@/models/Usuarios/FormUsuario";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -21,7 +22,7 @@ export default Vue.extend({
   components: { Tabla },
   data: () => ({
     columnas: [
-      { text: "Detalles", value: "detalles" },
+      { text: "Detalle", value: "detalle" },
       { text: "Documento", value: "documento" },
       { text: "Nombres", value: "nombres" },
       { text: "Apellidos", value: "apellidos" },
@@ -40,17 +41,7 @@ export default Vue.extend({
       { text: "Género", value: "genero" },
       { text: "Fecha de nacimiento", value: "fecha_nacimiento" },
     ],
-    campos_form: [
-      {
-        label: "Documento",
-        prepend_icon: "mdi-card-account-details",
-        type: 1,
-        format: "number",
-        required: "required",
-        name: "documento",
-        model: null,
-      },
-    ],
+    campos_form: CAMPOS,
   }),
 });
 </script>

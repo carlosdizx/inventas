@@ -69,6 +69,7 @@
             </v-radio-group>
             <v-select
               v-if="campo.type === 6"
+              :prepend-icon="campo.prepend_icon"
               :items="campo.items"
               :label="campo.label"
               solo
@@ -108,6 +109,7 @@ export default {
   },
   methods: {
     cargarInformacion() {
+      this.campos = [];
       this.titulo_form = this.titulo;
       this.campos_form.forEach((campo) => {
         this.campos.push(campo);
@@ -121,8 +123,8 @@ export default {
     async registrarFormulario() {
       await this.capturarCampos();
       await GUARDAR(this.coleccion_form, this.datos);
-      await Swal.fire("Registro exitoso", "Datos registrados", "success");
       this.cargarInformacion();
+      await Swal.fire("Registro exitoso", "Datos registrados", "success");
       this.datos = {};
       this.dialog_form = false;
       await this.$emit("registrado", true);
