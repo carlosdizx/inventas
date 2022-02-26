@@ -15,32 +15,16 @@
 <script lang="ts">
 import Tabla from "@/components/Tabla.vue";
 import { CAMPOS } from "@/models/Usuarios/FormUsuario";
+import { COLUMNAS } from "@/models/Usuarios/ColumnasUsuario";
+import { COLUMNAS_DETALLE } from "@/models/Usuarios/ColumnasDetalleUsuario";
 import Vue from "vue";
 
 export default Vue.extend({
   name: "Usuarios",
   components: { Tabla },
   data: () => ({
-    columnas: [
-      { text: "Detalle", value: "detalle" },
-      { text: "Documento", value: "documento" },
-      { text: "Nombres", value: "nombres" },
-      { text: "Apellidos", value: "apellidos" },
-      { text: "Correo", value: "correo" },
-      { text: "Estado", value: "estado" },
-      { text: "Acciones", value: "acciones" },
-    ],
-    campos_detalle: [
-      { text: "Documento", value: "documento" },
-      { text: "Nombres", value: "nombres" },
-      { text: "Apellidos", value: "apellidos" },
-      { text: "Correo", value: "correo" },
-      { text: "Estado", value: "estado" },
-      { text: "Celular", value: "celular" },
-      { text: "Dirección", value: "direccion" },
-      { text: "Género", value: "genero" },
-      { text: "Fecha de nacimiento", value: "fecha_nacimiento" },
-    ],
+    columnas: COLUMNAS,
+    campos_detalle: COLUMNAS_DETALLE,
     campos_form: CAMPOS,
   }),
 });
