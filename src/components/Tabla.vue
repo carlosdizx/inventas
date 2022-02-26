@@ -20,6 +20,7 @@
             </v-col>
             <v-col cols="2">
               <Form
+                @registrado="cargarInformacion"
                 :titulo="titulo"
                 :campos_form="campos_form"
                 :coleccion="coleccion"
@@ -153,6 +154,7 @@ export default Vue.extend({
       );
     },
     async cargarInformacion() {
+      this.filas = [];
       (await LISTAR(this.coleccion)).forEach((item) => {
         const obj = JSON.parse(JSON.stringify(item.data()));
         obj.id = item.id;

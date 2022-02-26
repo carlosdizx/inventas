@@ -89,6 +89,7 @@
 
 <script>
 import { GUARDAR } from "@/services/crud";
+import Swal from "sweetalert2";
 
 export default {
   name: "Form",
@@ -120,6 +121,11 @@ export default {
     async registrarFormulario() {
       await this.capturarCampos();
       await GUARDAR(this.coleccion_form, this.datos);
+      await Swal.fire("Registro exitoso", "Datos registrados", "success");
+      this.cargarInformacion();
+      this.datos = {};
+      this.dialog_form = false;
+      await this.$emit("registrado", true);
     },
   },
   created() {
